@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="js-clock">
+        <h1 class="js-title">
+            00:00
+        </h1>
+    </div>
+    <!-- F12=> Application => LocalsStorage: 정보를 유저 컴퓨터에 저장
+    같은 url에서만 작동한다. 내 document가 페이스북의 localStorage를 가져오지 못 하는 것처럼 -->
+    <!-- 새로고침해도 정보는 그대로 -->
+
+    <form action="" class="form js-form">
+        <input type="text" placeholder="What is your name?" >
+    </form>
+    <h4 class="greeting js-greeting"></h4>
+    <form action="" class="js-toDoForm">
+        <input type="text" placeholder="Write a to do">
+    </form>
+    <ul class="js-toDoList">
+    </ul>
+    <span class="js-weather">
+    </span>
+    <script src="clock.js"></script>
+    <script src="greeting.js"></script>
+    <script src="todo.js"></script>
+    <script src="background.js"></script>
+    <script src="weather.js"></script>
+</body>
+</html>
