@@ -1,0 +1,210 @@
+const toDoForm = document.querySelector(".toDoForm"),
+    toDoInput = toDoForm.querySelector("input"),
+    pending = document.querySelector(".pending"),
+    finished = document.querySelector(".finished");
+
+let toDos = [];
+let finToDos = [];
+
+const LOADSAVE = {
+    saveToDos : function (toDos) {
+        // localStorage.setItem(TODOS_LS ,toDos)
+        /* 위 처럼 object로는 localStorage에 저장할 수 없다. string만 가능함 
+        예를 들어 'Hello':true 를 주려고 해도 직접 입력하면 boolean이 아닌
+        string true가 나온다. */
+        /* 그래서 JSON.stringfy(object)로 string으로 만든 후 저장해야함 */
+        localStorage.setItem('toDos' ,JSON.stringify(toDos))
+        console.log('저장될떄',toDos);
+    },
+    loadToDos : function () {
+        const currentToDos = localStorage.getItem('toDos')
+        if (currentToDos) {
+            console.log('불러올때',currentToDos);
+            const parsedToDos = JSON.parse(currentToDos)
+            parsedToDos.forEach( (toDo) => CFD.createToDo(toDo.text) )
+        }
+    },
+    saveFinToDos : function (finToDos) {
+        localStorage.setItem('finToDos' ,JSON.stringify(finToDos))
+    },
+    /* 밑으로 하게되면 똑같이 li, span부터 다시 만들어야 함 */
+    loadFinToDos : function () {
+        const currentFinToDos = localStorage.getItem('finToDos')
+        if (currentFinToDos) {
+            const parsedFinToDos = JSON.parse(currentFinToDos)
+            parsedFinToDos.forEach( (finToDo) => CFD.createFinToDo(finToDo.text) )
+        }
+    }
+}
+/* fintodo가 어레이가 아니고 다르게 들어감 */
+const CFD = {
+    /* createTodo를 만들거면 새로 만드는 거니까
+    지우고 createtodo를 */
+    finishTodo : function (event) {
+        const btn = event.target;
+        const li = btn.parentNode;
+        /* 일단 지우기 */
+        const deletedTodos = toDos.filter( toDo => {
+     
+            return toDo.id !== parseInt(li.id)
+        })
+        toDos = deletedTodos
+        LOADSAVE.saveToDos(toDos);
+        /* finTodo에 있는게 자꾸 todo에 들어감  */
+        /* 삭제하고 저장해야 됨. 안그럼 그 전께 계속 살아나서 계속 4개만 남음 
+        localStorage에서도 사라졌네. 이거 어디서 했지? */
+
+        /* todo에서 없어진게 다시 들어간다. todo가 저장이 안됐다 */
+
+
+        /* 그리고 createFinTodos를 불러오기 */
+        /* const finId = li.id */
+        const finText = li.querySelector('span').innerText
+        console.log(finText);
+        /* 이 함수를 인식하지 못함. 왜? */
+
+
+
+        this.createFinToDo(finText);
+
+        /* finished를 가져와야 함 */
+        /* 이건 html에만 있는거고 */
+        // finished.appendChild(li);
+        // /* local에서
+        // todos에선 빼고 finTodos에 넣어줘야함 */
+        // const finToDosObj = {
+        //     text : finText,
+        //     // 요소가 하나씩 더 들어올 때마다 id를 증가시킬 수 있는 좋은 로직
+        //     id : finId
+        // }
+        // finToDos.push(finToDosObj);
+        // LOADSAVE.saveFinToDos(finToDos);
+        /* todos에서는 어떻게 빼냐? 
+        splice 로하면은 id를 갱신하면서 뺀다... 
+        id를 그대로 가져가면 더 쉬울듯, 왠지 delete도 다시 활용 가능하려나? */
+
+
+
+        /* 값을 옮겨줘야 한다. 어떻게 옮기지? 
+        새로 finished를 만들거야 함
+        여기서도 x , << 표시가 있는데 << 를 누르면 다시 pending으로 돌아가야 함 */
+
+
+
+
+    },
+    deleteToDo : function (event) {
+        const btn = event.target;
+        const li = btn.parentNode;
+        /* HTML에서 지우기 */
+        pending.removeChild(li)
+
+        const deletedTodos = toDos.filter( toDo => {
+            /* 지운 놈 제외하고 남아있는 놈의 id와 다르면 가져와라
+            == 방금 지운 놈만 가져와라
+            toDo의 id는 int, li의 id는 string */
+            return toDo.id !== parseInt(li.id)
+        })
+        toDos = deletedTodos
+        /* 삭제하고 저장해야 됨. 안그럼 그 전께 계속 살아나서 계속 4개만 남음 
+        localStorage에서도 사라졌네. 이거 어디서 했지? */
+        LOADSAVE.saveToDos(toDos);
+
+        /* 사라지긴 하는데, 눌를 때 바로 안되고 새로고침할때 됨
+        왜 그런가? */
+    },
+    reTodo : function (params) {
+        
+    },
+    createToDo : function (text) {
+        const finBtn = document.createElement('button');
+        finBtn.innerHTML = "&#10004";
+        finBtn.addEventListener('click', this.finishTodo);
+        const delBtn = document.createElement('button');
+        delBtn.innerHTML = "❌";
+        delBtn.addEventListener('click', this.deleteToDo);
+
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.innerText = text;
+
+        li.appendChild(span);
+        li.appendChild(finBtn);
+        li.appendChild(delBtn);
+        pending.appendChild(li);
+
+        /* todo에서 없어진게 다시 들어간다. todo가 저장이 안됐다 */
+        const toDoObj = {
+            text : text,
+            // 요소가 하나씩 더 들어올 때마다 id를 증가시킬 수 있는 좋은 로직
+            id : toDos.length + 1
+        }
+        /* 지울 때 어떤 li를 지워야 할 지도 알아야 하니까
+        li에도 id를 줘야 한다. */
+        li.id = toDos.length + 1;
+    
+        toDos.push(toDoObj);
+        LOADSAVE.saveToDos(toDos);
+        /* 아 loadFIn일때도 toDos에 저장해버리니까 생기는 문제였군....
+        이거를 경우를 나눠서야해되나? todos일떄랑 아닐때랑?
+        어케 경우를 나누지...?
+         */
+
+    },
+    createFinToDo : function (text) {
+        const reBtn = document.createElement('button');
+        reBtn.innerHTML = "<<";
+        reBtn.addEventListener('click', this.finishTodo);
+        const delBtn = document.createElement('button');
+        delBtn.innerHTML = "❌";
+        delBtn.addEventListener('click', this.deleteToDo);
+
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.innerText = text;
+
+        li.appendChild(span);
+        li.appendChild(reBtn);
+        li.appendChild(delBtn);
+        
+        finished.appendChild(li);
+        /* local에서
+        todos에선 빼고 finTodos에 넣어줘야함 */
+        const finToDosObj = {
+            text : text,
+            // 요소가 하나씩 더 들어올 때마다 id를 증가시킬 수 있는 좋은 로직
+            id : finTodos.length + 1
+        }
+        li.id = finTodos.length + 1; 
+        finToDos.push(finToDosObj);
+        LOADSAVE.saveFinToDos(finToDos);
+        
+        /* 다시 들어가기는 하는데, 안되잖아. */
+    
+        /* 아 loadFIn일때도 toDos에 저장해버리니까 생기는 문제였군....
+        이거를 경우를 나눠서야해되나? todos일떄랑 아닐때랑?
+        어케 경우를 나누지...?
+         */
+
+    }
+}
+
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const currentValue = toDoInput.value;
+
+    CFD.createToDo(currentValue)
+    /* 새로운 todo가 입력되면 input창 새로고침 */
+    toDoInput.value = ""
+};
+
+function init() {
+    LOADSAVE.loadToDos()
+    LOADSAVE.loadFinToDos()
+    /* 불러왔을 때는 없어진상태로 잘 되는데
+    불러오고 나서 다시 저장을 하네...? */
+    toDoForm.addEventListener("submit", handleSubmit);
+}
+
+init();
