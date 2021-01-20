@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number</title>
+</head>
+<body>
+    <h1>Random Number Game</h1>
+    <h2>Generate a number between 0 and
+        <span id="showRangeValue">100</span>
+    </h2>
+    <div class="controls">
+        <div class="controls__range">
+            <!-- input의 type을 range로 주면 range 바가 자동으로 생김! 
+            min,max. value는 기본값이 됨, which makes sense. value는 input의 초기값이니까 -->
+            <!-- 근데 숫자 정하는게 여기서 최댓값을 정해버리네
+            input의 value를 받아와서 maxNum에 줘야겠어 -->
+            <input type="range" id="range" min="0" max="200" value="100" step="1">
+        </div>
+        <div class="controls__input">
+            <form id="form">
+                <table>
+                    <tr>Guess the number: </tr>
+                    <tr>
+                        <input type="text" id="input" placeholder="100" value="100"/>
+                    </tr>
+                    <tr>
+                        <button type="submit" id="submit">Play!</button>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- 게임이 실행된 이후에 나와야하기때문에 
+        결과는 JS로 나오도록 해야 함 -->
+        <div id="result" class="result">
+        </div>
+    </div>
+    <script src="5일_랜덤숫자.js"></script>
+</body>
+</html>
