@@ -14,23 +14,33 @@ function handleSubmit(event) {
     const rangeValue = parseInt(showRangeValue.innerText);
     const result = document.querySelector("#result")
     if (inputValue <= rangeValue) {
-        const randomNumber = Math.floor(Math.random() * rangeValue)
-        /* 랜덤해서 나온 결과, 그리고 value값을 결정 해야 함
-        이렇게 하면 안되고 create으로 해야함 */
+        /* 한번하고 refresh하면 없어져야 하는데 계속 추가되고 있음. 어떻게 하지?
+        play를 누를 때 마다 refresh를 하면 되지...가 아니고
+        if (없으면 고고) {} else 있을때 {있는거 지우고}  */
 
+        if (result) {
+            document.querySelector("#result").innerText = ""
+        }
+        /* 양끝값 포함 */
+        const randomNumber = Math.floor(Math.random() * ( rangeValue + 1 ));
+        
         const youChose = document.createElement('span');
         const machineChose = document.createElement('span');
         youChose.innerText = `You chose: ${inputValue}, `;
-        machineChose.innerText = `The machine chose: ${randomNumber}`;
+        machineChose.innerText = `The machine chose: ${randomNumber}.`;
+
+
         result.appendChild(youChose);
         result.appendChild(machineChose);
-        /* 한번하고 refresh하면 없어져야 하는데 계속 추가되고 있음. 어떻게 하지?  */
         const wonOrLost = document.createElement('div');
-        if (inputValue === rangeValue) {
-            wonOrLost.innerText = `You won!`;
+
+        console.log('inputValue',inputValue,'randomNumber',randomNumber)
+        if (inputValue === randomNumber) {
+            wonOrLost.innerText = `You Won!`;
         } else {
             wonOrLost.innerText = `You Lost!`;
         }
+        wonOrLost.style.fontWeight = "900";
         result.appendChild(wonOrLost);
     }   
 }
