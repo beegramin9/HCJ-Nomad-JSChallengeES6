@@ -7,8 +7,33 @@ The current stable version is v0.0.1.
 # Overview
 ## Code Challenge
 ## ES6
-- destructuring
+- Destructuring
+```js
+- const developer = {
+    firstName: 'Nathan',
+    lastName: 'Sebhastian',
+    developer: true,
+    age: 25,
+}
+ 
+const { firstName : name} = developer;
+/* deconstruct object 'developer', allocate key 'firstName' to variable 'name' 
+variable 'name' returns now the value of the key 'firstName', string 'Nathan' */
 
+const { firstName, lastName } = developer;
+/* deconstruct as same process as above, not allocating them to any variables 
+keys 'firstName', 'lastName' return the values, 'Nathan', 'Sebhastian'*/
+
+/* Array */
+const numbers = [1,2,3,4,5];
+const [zero, one] = numbers;
+/* allocate index-accordingly
+zero = numbers[0], 
+one = numbers[1] */
+
+/* can skip through certain keys using , */
+const [first, second, , fourth] = numbers
+```
 # Technology Stack
 
 &nbsp;&nbsp;
