@@ -1,25 +1,19 @@
+/* 전체 화면 */
 body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-content: center;
   background-color: #ecf0f1;
-  color: #2c3e50;
+  color: #ecf0f1;
   transition: color 0.5s ease-in-out;
 }
 
-.clicked {
-  color: #7f8c8d;
-}
-
-.btn {
-  cursor: pointer;
-}
-
-.form {
-  display: none;
-}
-
-.showing {
-  display: block;
-}
-
+/* 배경화면 사진 */
 /* 순서 중요! 이미지 css 앞에 와야 함 */
 @keyframes fadeIn {
   from {
@@ -39,6 +33,243 @@ body {
   /* 사진이 글 뒤로 가게끔 */
   z-index: -1;
   /* 글 먼저 뜨고 사진이 나중에 나오는 게 보기 싫다
-  그래서 사진이 0.5 간격을 두고 그라데이션 하게 */
+    그래서 사진이 0.5 간격을 두고 그라데이션 하게 */
   animation: fadeIn 0.5s linear;
+}
+
+/* Gereral (버튼, 인풋) */
+button {
+  justify-content: flex-end;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+button:hover {
+  color: white;
+  background-color: rgba(107, 104, 99, 0.5);
+  transition: color 0.5s ease-in-out;
+}
+
+input {
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+/* 그리드 순서대로 배치, 123456789 */
+/* Left Hollow Grid, make page responisve */
+.empty-grid {
+  grid-area: 2 / 1 / 5 / 2;
+}
+
+/* Main Clock */
+.clock {
+  grid-area: 2 / 2 / 3 / 3;
+  background: linear-gradient(
+    121.57deg,
+    #ffffff 18.77%,
+    rgba(255, 255, 255, 0.66) 60.15%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 5em;
+  font-weight: 200;
+  max-height: 6em;
+}
+
+/* Todo 입력 Form */
+.todo-form {
+  grid-area: 3 / 2 / 4 / 3;
+  position: relative;
+  justify-self: center;
+  /* bottom: 100px */
+}
+
+.todo-input {
+  border: none;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  font-weight: 200px;
+  align-self: center;
+  font-size: 1.5rem;
+  background-color: rgba(107, 104, 99, 0.5);
+}
+
+.todo-input::placeholder {
+  background: linear-gradient(
+    121.57deg,
+    #ffffff 18.77%,
+    rgba(255, 255, 255, 0.66) 60.15%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+.todo-input:active,
+.todo-input:focus {
+  outline: none;
+}
+
+/* Greeting User(Form 입력 후), Grid 공유 */
+.greeting-form {
+  grid-area: 3 / 2 / 4 / 3;
+  position: relative;
+  justify-self: center;
+}
+
+.greeting-input {
+  border: none;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  font-weight: 200px;
+  align-self: center;
+  font-size: 1.5rem;
+  background-color: rgba(107, 104, 99, 0.5);
+}
+
+.greeting-input::placeholder {
+  background: linear-gradient(
+    121.57deg,
+    #ffffff 18.77%,
+    rgba(255, 255, 255, 0.66) 60.15%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+.greeting-input:active,
+.greeting-input:focus {
+  outline: none;
+}
+
+/* Pending, Finished */
+.pending-finished {
+  grid-area: 4 / 2 / 5 / 3;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  padding: 0;
+  margin: 20px 0 0 0;
+  grid-gap: 2em;
+}
+
+.pending-finished__line {
+  color: white;
+  width: 60px;
+  position: relative;
+  bottom: 25px;
+}
+
+.pending-card {
+  background: rgb(183, 16, 14, 0.4);
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid rgb(183, 16, 14);
+}
+
+.pending-section {
+  /* list-style: none; */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  grid-gap: 0.5em;
+}
+
+.pending-section h2 {
+  text-align: center;
+}
+
+/* 각각 버튼 */
+.pending li {
+  display: flex;
+  height: 50px;
+  width: 300px;
+}
+
+.pending li span {
+  color: white;
+  align-self: center;
+  flex: 7;
+}
+.pending li button {
+  flex: 1;
+}
+
+/* Finished */
+/* 감쌀 카드 디자인*/
+.finished-card {
+  background: rgba(15, 85, 91, 0.4);
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid rgb(15, 85, 91);
+}
+
+.finished-section {
+  /* list-style: none; */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  grid-gap: 0.5em;
+}
+
+.finished-section h2 {
+  text-align: center;
+}
+/* 각각 버튼 */
+.finished li {
+  display: flex;
+  grid-gap: 5px;
+  height: 50px;
+  width: 300px;
+}
+
+.finished li span {
+  color: white;
+  align-self: center;
+  flex: 7;
+}
+.finished li button {
+  flex: 1;
+}
+
+/* weather.js */
+.weather {
+  grid-area: 1 / 1 / 2 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+  grid-gap: 10px;
+  color: rgb(107, 104, 99);
+  font-size: 20px;
+  font-weight: 600;
+  text-align: right;
+  margin: 5px 15px 0 0;
 }

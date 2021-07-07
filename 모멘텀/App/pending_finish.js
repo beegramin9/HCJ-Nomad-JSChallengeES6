@@ -1,4 +1,4 @@
-const toDoForm = document.querySelector(".toDoForm"),
+const toDoForm = document.querySelector(".js-toDoForm"),
     toDoInput = toDoForm.querySelector("input"),
     pending = document.querySelector(".pending"),
     finished = document.querySelector(".finished");
@@ -185,8 +185,9 @@ const createFinToDo = (text) => {
 
 /* 이제 redo만 하면 돼!!! */
 
-
-const handleSubmit = (event) => {
+/* 원래는 handleSubmit이었는데, 똑같은 함수가 greeting.js에서도 있었어서
+오류 발생 */
+const handleToDoSubmit = (event) => {
     event.preventDefault();
     const currentValue = toDoInput.value;
 
@@ -200,7 +201,7 @@ function init() {
     LOADSAVE.loadFinToDos()
     /* 불러왔을 때는 없어진상태로 잘 되는데
     불러오고 나서 다시 저장을 하네...? */
-    toDoForm.addEventListener("submit", handleSubmit);
+    toDoForm.addEventListener("submit", handleToDoSubmit);
 }
 
 init();

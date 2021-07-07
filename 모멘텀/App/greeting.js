@@ -1,7 +1,4 @@
-/* 2 요소를 가지오기 */
-
-/* querySelectorAll은 Array로 모든 태그를
-querySelector는 첫번째 태그  */
+/* querySelectorAll은 Array로 모든 태그를, querySelector는 첫번째 태그  */
 const form = document.querySelector(".js-form"),
       input = form.querySelector('input'),
       greeting = document.querySelector('.js-greeting')
@@ -13,7 +10,7 @@ function saveName(text) {
     localStorage.setItem(USER_LS, text);
 }
 
-function handleSubmit(event) {
+function handleGreetingSubmit(event) {
     /* preventDefault
     event가 발생하면 default적으로 root에서, 즉 form에서 발생한다.
     form 이벤트의 default는 post처럼 다음 페이지로 넘어가려고 하는 것.
@@ -27,14 +24,13 @@ function handleSubmit(event) {
     saveName(currentValue)
 }
 
-
 // currentUser가 없을 때
 function askForName() {
     // form을 나타나게 하고 사용자 이름을 입력받음
     form.classList.add(Showing_CL);
     /* form이 생겼긴 한데, submit할 때 아무런 변화가 없음
     즉 submit 이벤트 핸들러를 만들면 submit 이후의 일을 콘트롤 가능 */
-    form.addEventListener('submit',handleSubmit)
+    form.addEventListener('submit',handleGreetingSubmit)
 
 }
 
@@ -47,7 +43,6 @@ function writeGreeting(text) {
     greeting.innerText = `Hello ${text}`;
 }
 
-
 function loadName() {
     const currentUser = localStorage.getItem(USER_LS)
     if (!currentUser) {
@@ -56,8 +51,6 @@ function loadName() {
         writeGreeting(currentUser)
     }
 }
-
-
 
 function init() {
     loadName()

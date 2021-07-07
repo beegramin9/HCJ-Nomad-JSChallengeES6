@@ -115,6 +115,7 @@ function deleteToDo(event) {
 
 
 function handleSubmit(event) {
+    console.log(event);
     event.preventDefault();
     const currentValue = toDoInput.value;
     createToDo(currentValue)
