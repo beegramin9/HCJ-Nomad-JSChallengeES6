@@ -1,7 +1,9 @@
 /* 전체 화면 */
 body {
+  font-family: "NEXONFootballGothicLA1", sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 5% 30% 25% 40%;
   flex-wrap: wrap;
   max-width: 100vw;
   margin: 0;
@@ -11,6 +13,14 @@ body {
   background-color: #ecf0f1;
   color: #ecf0f1;
   transition: color 0.5s ease-in-out;
+}
+
+@font-face {
+  font-family: "NEXONFootballGothicLA1";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXONFootballGothicLA1.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* 배경화면 사진 */
@@ -60,6 +70,7 @@ button:hover {
 }
 
 input {
+  font-family: "NEXONFootballGothicLA1", sans-serif;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
@@ -80,17 +91,27 @@ input {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 5em;
-  font-weight: 200;
+  font-size: 5rem;
+  font-weight: bold;
   max-height: 6em;
+  justify-self: center;
 }
 
 /* Todo 입력 Form */
-.todo-form {
+.greeting-todo-form {
   grid-area: 3 / 2 / 4 / 3;
-  position: relative;
+  justify-self: center;
+  /* display: block;
+  justify-content: center; */
+}
+
+.todo-form {
+  /* grid-area: 3 / 2 / 4 / 3; */
+  display: none;
+  /* transition: transform 200ms ease-in-out; */
   justify-self: center;
   /* bottom: 100px */
+  animation: fadein 2s;
 }
 
 .todo-input {
@@ -100,10 +121,18 @@ input {
   width: 300px;
   height: 80px;
   text-align: center;
-  font-weight: 200px;
+  font-weight: bold;
   align-self: center;
   font-size: 1.5rem;
   background-color: rgba(107, 104, 99, 0.5);
+  background: linear-gradient(
+    121.57deg,
+    #ffffff 18.77%,
+    rgba(255, 255, 255, 0.66) 60.15%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  caret-color: white;
 }
 
 .todo-input::placeholder {
@@ -127,8 +156,8 @@ input {
 
 /* Greeting User(Form 입력 후), Grid 공유 */
 .greeting-form {
-  grid-area: 3 / 2 / 4 / 3;
-  position: relative;
+  /* grid-area: 3 / 2 / 4 / 3; */
+  display: none;
   justify-self: center;
 }
 
@@ -139,10 +168,18 @@ input {
   width: 300px;
   height: 80px;
   text-align: center;
-  font-weight: 200px;
+  font-weight: bold;
   align-self: center;
   font-size: 1.5rem;
   background-color: rgba(107, 104, 99, 0.5);
+  background: linear-gradient(
+    121.57deg,
+    #ffffff 18.77%,
+    rgba(255, 255, 255, 0.66) 60.15%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  caret-color: white;
 }
 
 .greeting-input::placeholder {
@@ -164,6 +201,27 @@ input {
   outline: none;
 }
 
+.greeting-text {
+  text-align: center;
+}
+
+.showing-fadein {
+  animation: fadein 3s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Todo, Greeting 안 보이게 */
+.showing {
+  display: block;
+}
+
 /* Pending, Finished */
 .pending-finished {
   grid-area: 4 / 2 / 5 / 3;
@@ -171,7 +229,7 @@ input {
   flex-direction: row;
   justify-self: center;
   padding: 0;
-  margin: 20px 0 0 0;
+  margin: 0 0 0 0;
   grid-gap: 2em;
 }
 
@@ -182,81 +240,61 @@ input {
   bottom: 25px;
 }
 
-.pending-card {
-  background: rgb(183, 16, 14, 0.4);
+.pending-finished__card {
   display: flex;
   justify-self: center;
   justify-content: center;
   border-radius: 5px;
+  min-width: 20vw;
+  min-height: 20vh;
+  max-height: 35vh;
+}
+
+@media (max-width: 900px) {
+  .pending-finished__card {
+    min-width: 40vw;
+    min-height: 20vh;
+  }
+}
+
+.pending-card {
+  background: rgb(183, 16, 14, 0.4);
   border: 1px solid rgb(183, 16, 14);
 }
 
-.pending-section {
-  /* list-style: none; */
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  grid-gap: 0.5em;
-}
-
-.pending-section h2 {
-  text-align: center;
-}
-
-/* 각각 버튼 */
-.pending li {
-  display: flex;
-  height: 50px;
-  width: 300px;
-}
-
-.pending li span {
-  color: white;
-  align-self: center;
-  flex: 7;
-}
-.pending li button {
-  flex: 1;
-}
-
-/* Finished */
-/* 감쌀 카드 디자인*/
 .finished-card {
   background: rgba(15, 85, 91, 0.4);
-  display: flex;
-  justify-self: center;
-  justify-content: center;
-  border-radius: 5px;
   border: 1px solid rgb(15, 85, 91);
 }
 
-.finished-section {
+.pending-finished__section {
   /* list-style: none; */
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-self: center;
-  grid-gap: 0.5em;
+  grid-gap: 0.5px;
 }
 
-.finished-section h2 {
+.pending-finished__section h2 {
   text-align: center;
 }
+
 /* 각각 버튼 */
-.finished li {
+.pending-finished__list li {
   display: flex;
-  grid-gap: 5px;
   height: 50px;
   width: 300px;
+  position: relative;
+  bottom: 3rem;
 }
 
-.finished li span {
+.pending-finished__list span {
   color: white;
   align-self: center;
   flex: 7;
 }
-.finished li button {
+.pending-finished__list button {
   flex: 1;
 }
 

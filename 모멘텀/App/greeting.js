@@ -1,9 +1,10 @@
 /* querySelectorAll은 Array로 모든 태그를, querySelector는 첫번째 태그  */
 const form = document.querySelector(".js-form"),
-      input = form.querySelector('input'),
-      greeting = document.querySelector('.js-greeting')
+    input = form.querySelector('input'),
+    greeting = document.querySelector('.js-greeting')
 const USER_LS = 'currentUser',
-      Showing_CL = 'showing'
+    Showing_CL = 'showing',
+    Showing_with_fadein = 'showing-fadein'
 
 function saveName(text) {
     /* JSON형태, key-value값 */
@@ -38,9 +39,16 @@ function askForName() {
 function writeGreeting(text) {
     /* 이름을 다시 받을 필요가 없으므로 form을 숨기고 
     text의 색을 바꾸자 */
-    form.classList.remove(Showing_CL);
-    greeting.classList.add(Showing_CL);
-    greeting.innerText = `Hello ${text}`;
+    form.classList.remove(Showing_CL); /* input을 사라지게하고 greeting을 나오게 한다 */
+    greeting.classList.add(Showing_CL); /* 여기가 왜 서서히 나타나는게 안되지? */
+    greeting.classList.add(Showing_with_fadein); /* 여기가 왜 서서히 나타나는게 안되지? */
+    greeting.innerText = `Welcome, ${text}!`
+
+    /* Greeting 입력되었으면 todoForm을 나타나게
+    이걸 아래에 써놓으면 왜 안되지...? */
+    const toDoForm = document.querySelector(".js-toDoForm")
+    console.log('username appeared')
+    toDoForm.classList.add(Showing_CL);
 }
 
 function loadName() {
@@ -49,6 +57,7 @@ function loadName() {
         askForName()
     } else {
         writeGreeting(currentUser)
+        /* 여기에 나타나게 해야함 */
     }
 }
 

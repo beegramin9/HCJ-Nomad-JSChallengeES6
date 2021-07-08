@@ -196,7 +196,23 @@ const handleToDoSubmit = (event) => {
     toDoInput.value = ""
 };
 
+// /* localStorage에 이름이 들어있는지 먼저 확인*/
+// const USER_LS = 'currentUser',
+//     Showing_CL = 'showing',
+// 
+// function loadName() {
+//     const currentUser = localStorage.getItem(USER_LS)
+//     console.log('pending_finish.js, User exist?',currentUser)
+//     if (!currentUser) { /* user 없으면 user 입력하기 전엔 todo가 없어야 하니까 */
+//         toDoForm.classList.remove(Showing_CL);
+//     } else { /* user 있으면 todo가 나와야 한다 */
+//         toDoForm.classList.add(Showing_CL);
+//         /* toDoForm.classList.add(Showing_CL) */
+//     }
+// }
+
 function init() {
+    // loadName()
     LOADSAVE.loadToDos()
     LOADSAVE.loadFinToDos()
     /* 불러왔을 때는 없어진상태로 잘 되는데
