@@ -1,5 +1,5 @@
-const toDoForm = document.querySelector(".js-toDoForm"),
-    toDoInput = toDoForm.querySelector("input"),
+const toDoForm = document.querySelector(".todo-form"),
+    toDoInput = toDoForm.querySelector(".todo-input"),
     pending = document.querySelector(".pending"),
     finished = document.querySelector(".finished");
 
@@ -37,6 +37,24 @@ const LOADSAVE = {
     }
 }
 /* fintodo가 어레이가 아니고 다르게 들어감 */
+
+/* 여기 한번에 다 써야함 */
+function countIfPendingMoreThanFive() {
+    const alertPendingFive = document.querySelector(".alert-pendingfive")
+    console.log(JSON.parse(localStorage.toDos).length);
+    const numOfPending = JSON.parse(localStorage.toDos).length
+    if (numOfPending > 4) {
+        alertPendingFive.classList.add(CLASS_SHOWING);
+        /* 5에서 6으로 넘어갈때만 막아지고 담에 누르면 새로고침되고 그담에 안막아짐! */
+
+        toDoForm.removeEventListener("submit", handleToDoSubmit);
+        /* 이벤트리스너 제거한게 새로고침이 되는듯 */
+    } else {
+        alertPendingFive.classList.remove(CLASS_SHOWING);
+    }
+}
+
+
 
     /* createTodo를 만들거면 새로 만드는 거니까
     지우고 createtodo를 */
@@ -185,6 +203,8 @@ const createFinToDo = (text) => {
 
 /* 이제 redo만 하면 돼!!! */
 
+
+
 /* 원래는 handleSubmit이었는데, 똑같은 함수가 greeting.js에서도 있었어서
 오류 발생 */
 const handleToDoSubmit = (event) => {
@@ -194,22 +214,11 @@ const handleToDoSubmit = (event) => {
     createToDo(currentValue)
     /* 새로운 todo가 입력되면 input창 새로고침 */
     toDoInput.value = ""
+
 };
 
-// /* localStorage에 이름이 들어있는지 먼저 확인*/
-// const USER_LS = 'currentUser',
-//     Showing_CL = 'showing',
-// 
-// function loadName() {
-//     const currentUser = localStorage.getItem(USER_LS)
-//     console.log('pending_finish.js, User exist?',currentUser)
-//     if (!currentUser) { /* user 없으면 user 입력하기 전엔 todo가 없어야 하니까 */
-//         toDoForm.classList.remove(Showing_CL);
-//     } else { /* user 있으면 todo가 나와야 한다 */
-//         toDoForm.classList.add(Showing_CL);
-//         /* toDoForm.classList.add(Showing_CL) */
-//     }
-// }
+
+/* 삭제/제거 버튼에서도 해야함 */
 
 function init() {
     // loadName()
@@ -219,5 +228,6 @@ function init() {
     불러오고 나서 다시 저장을 하네...? */
     toDoForm.addEventListener("submit", handleToDoSubmit);
 }
+/* 버튼에서 한번 */
 
 init();

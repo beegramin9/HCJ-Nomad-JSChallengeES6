@@ -1,7 +1,7 @@
-const clockContainer = document.querySelector('.js-clock'),
+const clockContainer = document.querySelector('.clock'),
     /* soup 때처럼 부모 element의 자식 element 가져오기 */
     // 따로 . 이나 # 이 없다면 HTML 태그
-    clockTitle = clockContainer.querySelector('h1')
+    clockTitle = clockContainer.querySelector('.clock__title')
 
 // 현재 시각 얻기
 function getTime() {

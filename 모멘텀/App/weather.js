@@ -1,4 +1,4 @@
-const weather = document.querySelector('.js-weather'),
+const weather = document.querySelector('.weather'),
     span_place = weather.querySelector(".weather__place"),
     span_temperature = weather.querySelector(".weather__temperature")
 
