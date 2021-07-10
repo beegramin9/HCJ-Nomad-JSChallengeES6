@@ -27,6 +27,7 @@ body {
 /* Gereral (버튼, 인풋) */
 button {
   justify-content: flex-end;
+  align-self: center;
   width: 2em;
   height: 3em;
   padding: 1em;
