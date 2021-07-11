@@ -15,12 +15,8 @@
     context는 canvas 안의 픽셀이라고 생각하면 됨 -->
     <!-- 리셋버튼 넣는거 어때? -->
     <section class="paint-box">
-        <div class="canvas-section">
-            <canvas id="jsCanvas" class="canvas">
-            </canvas>
-            <button id="jsReset" class="canvas--reset-button">Reset
-            </button>
-        </div>
+        <canvas id="jsCanvas" class="canvas">
+        </canvas>
 
         <div class="controls">
             <!-- Range Input: 붓이 얼마나 큰지 작은지 -->
@@ -37,10 +33,16 @@
             <!-- 버튼 2개 만들기 -->
             <div class="controls__btns">
                 <!-- 모드선택 버튼 -->
-                <button id="jsMode">Fill
+                <button id="jsMode">Filling
                 </button>
+                <!-- 알람하나 설정해서 서로 반대인게 나오도록 할 수 있나? -->
+
                 <!-- 저장 버튼 -->
                 <button id="jsSave">Save
+                </button>
+                <button id="jsErase">Erase
+                </button>
+                <button id="jsReset">Reset
                 </button>
             </div>
         </div>        
