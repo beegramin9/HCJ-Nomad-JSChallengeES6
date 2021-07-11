@@ -38,26 +38,7 @@ const LOADSAVE = {
 }
 /* fintodo가 어레이가 아니고 다르게 들어감 */
 
-/* 여기 한번에 다 써야함 */
-function countIfPendingMoreThanFive() {
-    const alertPendingFive = document.querySelector(".alert-pendingfive")
-    console.log(JSON.parse(localStorage.toDos).length);
-    const numOfPending = JSON.parse(localStorage.toDos).length
-    if (numOfPending > 4) {
-        alertPendingFive.classList.add(CLASS_SHOWING);
-        /* 5에서 6으로 넘어갈때만 막아지고 담에 누르면 새로고침되고 그담에 안막아짐! */
 
-        toDoForm.removeEventListener("submit", handleToDoSubmit);
-        /* 이벤트리스너 제거한게 새로고침이 되는듯 */
-    } else {
-        alertPendingFive.classList.remove(CLASS_SHOWING);
-    }
-}
-
-
-
-    /* createTodo를 만들거면 새로 만드는 거니까
-    지우고 createtodo를 */
 const finishTodo = function (event) {
     /* 여기서 버튼 지워야 함 */
 

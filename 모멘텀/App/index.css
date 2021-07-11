@@ -226,6 +226,7 @@ input:focus {
 /* <li>: 각각 Todo Container */
 .pending-finished__list li {
   display: flex;
+  flex-wrap: wrap;
   height: 50px;
   width: 300px;
   position: relative;
@@ -237,6 +238,7 @@ input:focus {
   color: white;
   align-self: center;
   flex: 7;
+  max-width: 200px;
 }
 /* Todo Button */
 .pending-finished__list button {
