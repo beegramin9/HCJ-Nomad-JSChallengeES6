@@ -13,16 +13,26 @@
     <!-- JS와 ID를 맞추고, CSS와 class를 맞출 것 -->
     <!-- canvas는 context를 가진 HTML 요소
     context는 canvas 안의 픽셀이라고 생각하면 됨 -->
+    <!-- 리셋버튼 넣는거 어때? -->
     <section class="paint-box">
-        <canvas id="jsCanvas" class="canvas">
-            
-        </canvas>
+        <div class="canvas-section">
+            <canvas id="jsCanvas" class="canvas">
+            </canvas>
+            <button id="jsReset" class="canvas--reset-button">Reset
+            </button>
+        </div>
+
         <div class="controls">
             <!-- Range Input: 붓이 얼마나 큰지 작은지 -->
             <div class="controls__range">
+                <div class="controls__range__number">
+                    <span>0.1</span>
+                    <div class="controls__range__text">Brush Size</div>
+                    <span>5.0</span>
+                </div>
                 <!-- input의 type을 range로 주면 range 바가 자동으로 생김! 
-                min,max. value는 기본값이 됨, which makes sense. value는 input의 초기값이니까 -->
-                <input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1">
+                    min,max. value는 기본값이 됨, which makes sense. value는 input의 초기값이니까 -->
+                    <input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1">
             </div>
             <!-- 버튼 2개 만들기 -->
             <div class="controls__btns">
