@@ -60,7 +60,7 @@ body {
   justify-self: center;
   align-items: center;
   position: relative;
-  bottom: 2em;
+  bottom: 4em;
 }
 
 @media (max-width: 950px) {
@@ -171,7 +171,7 @@ button:active {
   align-items: center;
   grid-gap: 3px;
   position: relative;
-  bottom: 2em;
+  bottom: 4em;
 }
 
 @media (max-width: 950px) {
