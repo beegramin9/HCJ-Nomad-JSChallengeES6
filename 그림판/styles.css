@@ -66,7 +66,7 @@ body {
 @media (max-width: 950px) {
   .controls {
     position: relative;
-    bottom: 4em;
+    bottom: 6em;
   }
 }
 
@@ -120,6 +120,7 @@ body {
   justify-content: center;
   grid-gap: 0.5em;
   margin-bottom: 1em;
+  position: relative;
 }
 
 @media (max-width: 950px) {
@@ -127,7 +128,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-self: center;
-    margin-bottom: 0.5em;
+    margin: 0;
   }
 }
 
@@ -151,6 +152,7 @@ button {
   text-transform: uppercase;
   font-weight: 800;
   font-size: 12px;
+  min-height: 2em;
 }
 
 /* :active 버튼처럼 누르는 효과 주기. 해당 태그에 딱 붙여써야 함 */
@@ -178,7 +180,7 @@ button:active {
     flex-direction: column;
     justify-self: center;
     position: relative;
-    bottom: 4em;
+    bottom: 6em;
   }
 }
 
@@ -218,3 +220,6 @@ button:active {
     그래서 사진이 0.5 간격을 두고 그라데이션 하게 */
   animation: fadein 1s linear;
 }
+
+/* Alert, Current Mode */
+/* 알람 끄기 안됨 , 버튼에 이벤트리스너 넣어야함... ㅅㅂ*/

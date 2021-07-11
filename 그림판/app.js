@@ -80,10 +80,10 @@ if (range) {
 let filling = false
 function handleModeClick() {
     if (filling) {
-        mode.innerText = "Filling"
+        mode.innerText = "Change to \n Filling"
         filling = false
     } else {
-        mode.innerText = "Draw"
+        mode.innerText = "Change to \n Draw"
         filling = true
     }
 }
