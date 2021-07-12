@@ -7,35 +7,26 @@
     <title>Calculator Clone</title>
 </head>
 <body>
-    <table class="calculator">
-        <tr>
-            <td colspan="3" id="result">0</td>
-            <td><button class="button-reset" value="C">C</button></td>
-        </tr>
-        <tr>
-            <td><button class="button" value="7">7</button></td>
-            <td><button class="button" value="8">8</button></td>
-            <td><button class="button" value="9">9</button></td>
-            <td><button class="button orange" value="+">+</button></td>
-        </tr>
-        <tr>
-            <td><button class="button" value="4">4</button></td>
-            <td><button class="button" value="5">5</button></td>
-            <td><button class="button" value="6">6</button></td>
-            <td><button class="button orange" value="-">-</button></td>
-        </tr>
-        <tr>
-            <td><button class="button" value="1">1</button></td>
-            <td><button class="button" value="2">2</button></td>
-            <td><button class="button" value="3">3</button></td>
-            <td><button class="button orange" value="*">*</button></td>
-        </tr>
-        <tr>
-            <td colspan="2"><button class="button" value="0">0</button></td>
-            <td><button class="button-stop" value="=">=</button></td>
-            <td><button class="button orange" value="/">/</button></td>
-        </tr>
-    </table>
+    <img src="image/Background.jpg" art="smart brain">
+    <section class="calculator">
+        <input type="text" id="result" value="0" disabled>
+        <button data-type="reset" class="button" id="reset"  value="C">C</button>
+        <button class="button" value="7">7</button>
+        <button class="button" value="8">8</button>
+        <button class="button" value="9">9</button>
+        <button data-type="operator" class="button color-inversion" value="+">+</button>
+        <button class="button" value="4">4</button>
+        <button class="button" value="5">5</button>
+        <button class="button" value="6">6</button>
+        <button data-type="operator" class="button color-inversion" value="-">-</button>
+        <button class="button" value="1">1</button>
+        <button class="button" value="2">2</button>
+        <button class="button" value="3">3</button>
+        <button data-type="operator" class="button color-inversion" value="*">*</button>
+        <button class="button" id="zero"  value="0">0</button>
+        <button data-type="equal" class="button" id="equal"  value="=">=</button>
+        <button data-type="operator" class="button color-inversion" value="/">/</button>
+    </section>
     <script src="app.js"></script>
 </body>
 </html>
