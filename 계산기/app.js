@@ -1,3 +1,4 @@
+/* https://kanhi.tistory.com/6?category=807466 */
 const buttons = document.querySelectorAll('.button')
 const displayElement = document.querySelector('input')
 
