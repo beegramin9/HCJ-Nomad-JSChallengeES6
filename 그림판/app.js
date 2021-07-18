@@ -8,9 +8,9 @@ const ctx = canvas.getContext('2d')
 
 /* css로 만든 햐얀 네모는 그냥 디자인일 뿐이고
 실제 HTML 요소를 위한 크기도 정해줘야 한다.(= 픽셀을 잡는 과정)
-이렇게 700으로 해놓으면 반응형으로 em으로 잡아도 될려나..? */
-canvas.width = 700
-canvas.height = 700
+이렇게 650으로 해놓으면 반응형으로 em으로 잡아도 될려나..? */
+canvas.width = 650
+canvas.height = 650
 
 // canvas 기본색 하얀색으로
 ctx.fillStyle = 'white'

@@ -6,8 +6,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
   background-size: 100% 100%;
+}
+
+@media (max-height: 1200px) {
+  body {
+    margin-top: 2em;
+  }
 }
 
 /* Introduction */
@@ -43,8 +48,8 @@ body {
 }
 .canvas {
   grid-area: canvas;
-  width: 700px;
-  height: 700px;
+  width: 650px;
+  height: 650px;
   background-color: white;
   border-radius: 15px;
   /* 그림자 추가 */
@@ -171,7 +176,7 @@ button:active {
   align-items: center;
   grid-gap: 3px;
   position: relative;
-  bottom: 4em;
+  bottom: 5em;
 }
 
 @media (max-width: 950px) {
